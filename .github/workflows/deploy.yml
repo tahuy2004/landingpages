@@ -21,4 +21,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 21098
           source: "."
-          target: "/home/xuonhfke/perfectnhatban.com/"
+         target: "/home/xuonhfke/p9.perfectnhatban.com/"
