@@ -1,0 +1,1651 @@
+/* BIEN MAU / THEME: doi mau toan trang tai day */
+:root {
+  --ink: #07155f;
+  --muted: #59627f;
+  --line: #dfe6ff;
+  --aqua: #e8ff16;
+  --aqua-deep: #1539d6;
+  --coral: #d6f200;
+  --sage: #72a7ff;
+  --cream: #f4f7ff;
+  --white: #ffffff;
+  --shadow: 0 22px 50px rgba(7, 21, 95, 0.14);
+  --radius: 8px;
+  --container: 1180px;
+}
+
+/* RESET CO BAN */
+* {
+  box-sizing: border-box;
+}
+
+/* THIET LAP CHUNG CHO TRANG */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f4f7ff 36%, #ffffff 64%, #f7f9ff 100%);
+  letter-spacing: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* LAYOUT CHUNG */
+.container {
+  width: min(100% - 40px, var(--container));
+  margin: 0 auto;
+}
+
+/* HEADER: logo, menu desktop/mobile, CTA tren cung */
+.site-header {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  z-index: 20;
+  width: min(calc(100% - 32px), var(--container));
+  min-height: 64px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 12px 10px 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(21, 57, 214, 0.14);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 40px rgba(7, 21, 95, 0.1);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 190px;
+}
+
+.brand-mark {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  color: var(--white);
+  font-weight: 800;
+  background: linear-gradient(135deg, #07155f 0%, #1539d6 100%);
+  border: 2px solid rgba(232, 255, 22, 0.74);
+  border-radius: var(--radius);
+}
+
+.brand strong,
+.brand small {
+  display: block;
+  line-height: 1.1;
+}
+
+.brand small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-nav a {
+  padding: 12px 14px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+}
+
+.site-nav a:hover {
+  color: var(--ink);
+  background: rgba(21, 57, 214, 0.08);
+}
+
+.site-nav .nav-cta {
+  color: var(--white);
+  background: var(--aqua-deep);
+}
+
+.site-nav .nav-cta:hover {
+  color: var(--aqua);
+  background: var(--ink);
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 4px auto;
+  background: var(--ink);
+}
+
+/* HERO / BANNER: anh nen san pham va noi dung chinh */
+.hero {
+  position: relative;
+  min-height: 760px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 247, 255, 0.9) 36%, rgba(255, 255, 255, 0.12) 68%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(244, 247, 255, 0.2) 76%, #f4f7ff 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 40px, var(--container));
+  margin: 0 auto;
+  padding: 172px 0 96px;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 14px;
+  color: var(--aqua-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 620px;
+  margin: 0;
+  font-size: 4.15rem;
+  line-height: 1.02;
+  font-weight: 800;
+}
+
+.hero-lead {
+  max-width: 610px;
+  margin: 24px 0 0;
+  color: #39446f;
+  font-size: 1.16rem;
+  line-height: 1.75;
+}
+
+/* SALE COUNTDOWN: khung uu dai chay gio trong banner */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.sale-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  width: min(100%, 720px);
+  margin-top: 30px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(232, 255, 22, 0.72);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 42px rgba(7, 21, 95, 0.12);
+  animation: saleGlow 2200ms ease-in-out infinite;
+  backdrop-filter: blur(16px);
+}
+
+.sale-copy span,
+.sale-copy strong {
+  display: block;
+}
+
+.sale-copy span {
+  margin-bottom: 5px;
+  color: var(--aqua-deep);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.sale-copy strong {
+  color: var(--ink);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  gap: 8px;
+}
+
+.countdown div {
+  min-height: 66px;
+  padding: 8px;
+  text-align: center;
+  color: var(--white);
+  background: linear-gradient(180deg, var(--aqua-deep) 0%, var(--ink) 100%);
+  border-radius: var(--radius);
+  box-shadow: inset 0 -10px 18px rgba(255, 255, 255, 0.06);
+}
+
+.countdown strong,
+.countdown span {
+  display: block;
+}
+
+.countdown strong {
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.countdown span {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.countdown.is-ticking div:last-child {
+  animation: tickPulse 900ms ease;
+}
+
+/* BUTTONS: nut CTA chinh va nut phu */
+.button {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button.primary {
+  color: var(--white);
+  background: var(--aqua-deep);
+  box-shadow: 0 12px 28px rgba(21, 57, 214, 0.25);
+}
+
+.button.primary:hover {
+  color: var(--aqua);
+  background: var(--ink);
+  box-shadow: 0 14px 34px rgba(7, 21, 95, 0.28);
+}
+
+.button.ghost {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(21, 57, 214, 0.14);
+}
+
+.button.full {
+  width: 100%;
+}
+
+/* HERO METRICS: cac o thong so nhanh tren banner */
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 650px);
+  margin-top: 48px;
+}
+
+.hero-metrics div {
+  min-height: 112px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(21, 57, 214, 0.1);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 36px rgba(7, 21, 95, 0.08);
+}
+
+.hero-metrics strong {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.hero-metrics span {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+/* SECTION BACKGROUND / KHOANG CACH CHUNG */
+.section-band {
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+}
+
+.intro,
+.product-section,
+.compliance-section,
+.video-section,
+.clinical,
+.feedback,
+.partner {
+  padding: 96px 0;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 56px;
+  align-items: start;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2.45rem;
+  line-height: 1.18;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+/* DOI TUONG & LOI ICH: cards cho bac si da lieu, clinic, TMV */
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.feature-list article,
+.audience-grid article,
+.case-card,
+.feedback-card,
+.lead-form {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 14px 36px rgba(7, 21, 95, 0.07);
+}
+
+.feature-list article {
+  min-height: 248px;
+  padding: 24px;
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.audience-grid article {
+  min-height: 238px;
+  padding: 24px;
+}
+
+.audience-grid span {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 0 12px;
+  margin-bottom: 22px;
+  color: var(--aqua-deep);
+  font-size: 0.76rem;
+  font-weight: 800;
+  background: rgba(232, 255, 22, 0.24);
+  border: 1px solid rgba(232, 255, 22, 0.42);
+  border-radius: var(--radius);
+  text-transform: uppercase;
+}
+
+.feature-icon {
+  display: inline-grid;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 30px;
+  place-items: center;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--aqua-deep);
+  border-radius: var(--radius);
+}
+
+.feature-icon.coral {
+  color: var(--ink);
+  background: var(--aqua);
+}
+
+.feature-icon.sage {
+  color: var(--white);
+  background: #0b2499;
+}
+
+.feature-list p,
+.audience-grid p,
+.case-card p {
+  margin-bottom: 0;
+}
+
+/* SAN PHAM: anh hop san pham va chi tiet chat lieu / hoat chat */
+.product-section {
+  background: linear-gradient(180deg, #f7f9ff 0%, #ffffff 100%);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.product-media {
+  position: relative;
+  overflow: hidden;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(21, 57, 214, 0.1) 0%, rgba(232, 255, 22, 0.16) 100%),
+    var(--white);
+  border: 1px solid rgba(21, 57, 214, 0.14);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.product-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius);
+}
+
+.product-badge {
+  position: absolute;
+  left: 34px;
+  bottom: 34px;
+  display: grid;
+  gap: 5px;
+  min-width: 132px;
+  padding: 14px;
+  color: var(--ink);
+  background: rgba(232, 255, 22, 0.9);
+  border: 1px solid rgba(7, 21, 95, 0.18);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 34px rgba(7, 21, 95, 0.18);
+}
+
+.product-badge span {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.product-badge strong {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.product-detail > p {
+  max-width: 620px;
+}
+
+.product-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.product-specs div,
+.ingredient-panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 34px rgba(7, 21, 95, 0.06);
+}
+
+.product-specs div {
+  min-height: 94px;
+  padding: 18px;
+}
+
+.product-specs span,
+.product-specs strong {
+  display: block;
+}
+
+.product-specs span {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.product-specs strong {
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.ingredient-panel {
+  margin-top: 14px;
+  padding: 22px;
+}
+
+.ingredient-panel h3 {
+  margin-bottom: 16px;
+}
+
+.ingredient-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ingredient-grid span {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  padding: 0 13px;
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 800;
+  background: rgba(232, 255, 22, 0.42);
+  border: 1px solid rgba(21, 57, 214, 0.14);
+  border-radius: var(--radius);
+}
+
+.ingredient-panel p {
+  margin-bottom: 0;
+}
+
+/* PHAP LY & HOA DON: card uy tin cho doi tac */
+.compliance-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+}
+
+.compliance-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.compliance-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.compliance-cards article {
+  min-height: 242px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 34px rgba(7, 21, 95, 0.07);
+}
+
+.compliance-cards span {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  margin-bottom: 28px;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 800;
+  background: var(--aqua);
+  border-radius: var(--radius);
+}
+
+.compliance-cards p {
+  margin-bottom: 0;
+}
+
+.document-gallery {
+  margin-top: 28px;
+}
+
+.document-gallery-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.document-gallery-head h3 {
+  margin: 0;
+}
+
+.document-gallery-head p {
+  max-width: 560px;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.document-grid.single-document {
+  grid-template-columns: minmax(260px, 420px);
+  justify-content: center;
+}
+
+.document-card {
+  overflow: hidden;
+  min-height: 260px;
+  background: var(--white);
+  border: 1px dashed rgba(21, 57, 214, 0.32);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 34px rgba(7, 21, 95, 0.06);
+}
+
+.document-card img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.document-card-paper {
+  padding: 12px;
+  border-style: solid;
+}
+
+.document-caption {
+  display: grid;
+  gap: 4px;
+  padding: 14px 6px 4px;
+  text-align: center;
+}
+
+.document-caption strong,
+.document-caption span {
+  display: block;
+}
+
+.document-caption span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.document-placeholder {
+  display: grid;
+  min-height: 260px;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  padding: 24px;
+  text-align: center;
+  color: var(--ink);
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7ff 100%);
+}
+
+.document-placeholder span {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  color: var(--ink);
+  font-weight: 800;
+  background: var(--aqua);
+  border-radius: var(--radius);
+}
+
+.document-placeholder small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* VIDEO SECTION: text ben trai va khung video ben phai */
+.video-grid,
+.partner-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.section-copy p {
+  max-width: 560px;
+}
+
+.check-list {
+  display: grid;
+  gap: 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 30px;
+  color: #39446f;
+  line-height: 1.6;
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 16px;
+  height: 16px;
+  background: var(--aqua);
+  border: 4px solid rgba(21, 57, 214, 0.14);
+  border-radius: 50%;
+}
+
+.video-card {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  min-height: 330px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.video-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.02);
+}
+
+.video-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(7, 21, 95, 0.08) 0%, rgba(7, 21, 95, 0.52) 100%);
+}
+
+.play-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 76px;
+  height: 76px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 40px rgba(7, 21, 95, 0.24);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.play-button span {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 30px;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 18px solid var(--aqua-deep);
+}
+
+.video-caption {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  z-index: 2;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--white);
+}
+
+.video-caption strong,
+.video-caption small {
+  display: block;
+}
+
+.video-caption small {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* SECTION HEADINGS: tieu de / mo ta dau moi section */
+.section-head {
+  max-width: 740px;
+  margin-bottom: 36px;
+}
+
+.section-head.compact {
+  max-width: 700px;
+}
+
+.section-head p:last-child {
+  margin-bottom: 0;
+}
+
+/* CA LAM SANG: slider gom 2 anh moi ca */
+.clinical-showcase {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.clinical-track {
+  display: flex;
+  transition: transform 720ms ease;
+  will-change: transform;
+}
+
+.clinical-page {
+  display: grid;
+  flex: 0 0 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px;
+}
+
+.clinical-slide {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: #eef3ff;
+  border-radius: var(--radius);
+}
+
+.clinical-slide:only-child {
+  grid-column: 1 / -1;
+}
+
+.clinical-slide img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.clinical-slide figcaption {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  min-height: 32px;
+  padding: 9px 12px;
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: rgba(7, 21, 95, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+}
+
+.clinical-slide figcaption span,
+.clinical-slide figcaption strong {
+  display: block;
+}
+
+.clinical-slide figcaption span {
+  color: var(--aqua);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.clinical-slide figcaption strong {
+  margin-top: 3px;
+  line-height: 1.35;
+}
+
+.clinical-control {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  color: var(--white);
+  font-size: 2rem;
+  line-height: 1;
+  background: rgba(7, 21, 95, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.clinical-control:hover {
+  color: var(--ink);
+  background: rgba(232, 255, 22, 0.9);
+}
+
+.clinical-control.prev {
+  left: 16px;
+}
+
+.clinical-control.next {
+  right: 16px;
+}
+
+.clinical-control[hidden],
+.clinical-dots[hidden] {
+  display: none;
+}
+
+.clinical-note {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 2;
+  width: min(360px, calc(100% - 48px));
+  padding: 18px;
+  color: var(--white);
+  background: rgba(7, 21, 95, 0.58);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+}
+
+.clinical-note span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--aqua);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.clinical-note strong {
+  display: block;
+  line-height: 1.5;
+}
+
+.clinical-note small {
+  display: block;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.55;
+}
+
+.clinical-dots {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.clinical-dots button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.58);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.clinical-dots button.is-active {
+  width: 28px;
+  background: var(--aqua);
+  border-radius: 999px;
+}
+
+/* CASE CARDS: cac the mo ta ben duoi slider ca lam sang */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.case-card {
+  min-height: 220px;
+  padding: 24px;
+}
+
+.case-tag {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 0 12px;
+  margin-bottom: 22px;
+  color: var(--aqua-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: rgba(21, 57, 214, 0.08);
+  border-radius: var(--radius);
+}
+
+/* FEEDBACK: nhan xet doi tac */
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.feedback-card {
+  min-height: 304px;
+  padding: 28px;
+}
+
+.rating {
+  margin-bottom: 18px;
+  color: #b2c900;
+  font-size: 1rem;
+}
+
+.feedback-card p {
+  min-height: 126px;
+  margin-top: 0;
+  color: #2f3a6c;
+}
+
+.feedback-card strong,
+.feedback-card span {
+  display: block;
+}
+
+.feedback-card span {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* FORM DOI TAC: copy ben trai, form nhap lieu ben phai */
+.partner-grid {
+  align-items: start;
+}
+
+.partner-copy {
+  position: sticky;
+  top: 112px;
+}
+
+.partner-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.partner-points span {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  padding: 0 14px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: linear-gradient(180deg, #ffffff 0%, var(--cream) 100%);
+  border: 1px solid rgba(21, 57, 214, 0.12);
+  border-radius: var(--radius);
+}
+
+/* FORM FIELDS: input, select, textarea, checkbox, trang thai gui form */
+.lead-form {
+  padding: 30px;
+}
+
+.form-row {
+  margin-bottom: 18px;
+}
+
+.form-row.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.address-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  gap: 14px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: #fbfcff;
+  border: 1px solid #ced8ff;
+  border-radius: var(--radius);
+  outline: 0;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background: var(--white);
+  border-color: var(--aqua-deep);
+  box-shadow: 0 0 0 4px rgba(21, 57, 214, 0.14);
+}
+
+.consent {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  align-items: start;
+  margin: 8px 0 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.consent input {
+  width: 18px;
+  min-height: 18px;
+  margin-top: 3px;
+  accent-color: var(--aqua-deep);
+}
+
+.form-status {
+  min-height: 26px;
+  margin: 14px 0 0;
+  color: var(--aqua-deep);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+/* VIDEO MODAL: popup khi bam play video */
+.video-modal[hidden] {
+  display: none;
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 21, 95, 0.72);
+}
+
+.video-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  color: var(--white);
+  background: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  color: var(--white);
+  font-size: 1.7rem;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.video-placeholder {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  padding: 32px;
+  text-align: center;
+  background: linear-gradient(135deg, #07155f 0%, #1539d6 55%, #06104a 100%);
+}
+
+.video-placeholder strong {
+  font-size: 1.6rem;
+}
+
+.video-placeholder span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* FOOTER: thuong hieu, lien he, dieu huong, luu y */
+.site-footer {
+  padding: 58px 0 24px;
+  background: linear-gradient(180deg, #07155f 0%, #06104a 100%);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.95fr 0.8fr 1.05fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.site-footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.9rem;
+}
+
+.site-footer a {
+  color: var(--aqua);
+  font-weight: 800;
+}
+
+.footer-logo {
+  margin-bottom: 18px;
+}
+
+.footer-logo .brand-mark {
+  color: var(--ink);
+  background: var(--aqua);
+}
+
+.footer-logo strong {
+  color: var(--white);
+}
+
+.footer-logo small {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.footer-brand p {
+  max-width: 360px;
+}
+
+.footer-col {
+  display: grid;
+  gap: 10px;
+}
+
+.footer-col h2 {
+  margin: 0 0 8px;
+  color: var(--white);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.footer-col a,
+.footer-col span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.footer-col a:hover {
+  color: var(--aqua);
+}
+
+.footer-note {
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(232, 255, 22, 0.2);
+  border-radius: var(--radius);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 42px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ANIMATION: glow sale va pulse countdown */
+@keyframes saleGlow {
+  0%,
+  100% {
+    box-shadow: 0 18px 42px rgba(7, 21, 95, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 20px 46px rgba(232, 255, 22, 0.34);
+  }
+}
+
+@keyframes tickPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 980px) {
+  .site-header {
+    top: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 40px rgba(7, 21, 95, 0.12);
+  }
+
+  .site-nav.is-open {
+    display: grid;
+  }
+
+  .site-nav a {
+    width: 100%;
+  }
+
+  .hero {
+    min-height: 720px;
+  }
+
+  .hero-content {
+    padding-top: 144px;
+  }
+
+  .hero h1 {
+    font-size: 3.15rem;
+  }
+
+  .intro-grid,
+  .product-grid,
+  .compliance-grid,
+  .video-grid,
+  .partner-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .feature-list,
+  .audience-grid,
+  .compliance-cards,
+  .document-grid,
+  .case-grid,
+  .feedback-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sale-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-copy {
+    position: static;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 640px) {
+  .container,
+  .hero-content {
+    width: min(100% - 28px, var(--container));
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .site-header .brand span:last-child {
+    display: none;
+  }
+
+  .hero {
+    min-height: 760px;
+  }
+
+  .hero-media {
+    object-position: 64% center;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 247, 255, 0.9) 45%, rgba(244, 247, 255, 0.26) 74%, #f4f7ff 100%);
+  }
+
+  .hero h1 {
+    max-width: 360px;
+    font-size: 2.55rem;
+  }
+
+  .hero-lead {
+    font-size: 1rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+    margin-top: 34px;
+  }
+
+  .hero-metrics div {
+    min-height: auto;
+  }
+
+  .sale-strip {
+    padding: 12px;
+  }
+
+  .countdown {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .intro,
+  .product-section,
+  .compliance-section,
+  .video-section,
+  .clinical,
+  .feedback,
+  .partner {
+    padding: 68px 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .video-card {
+    min-height: 240px;
+  }
+
+  .product-media {
+    padding: 12px;
+  }
+
+  .product-badge {
+    left: 22px;
+    bottom: 22px;
+  }
+
+  .product-specs {
+    grid-template-columns: 1fr;
+  }
+
+  .document-gallery-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .video-caption {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .clinical-page {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .clinical-slide img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .clinical-slide figcaption {
+    top: 10px;
+    right: 10px;
+    min-height: 28px;
+    padding: 6px 9px;
+    font-size: 0.68rem;
+  }
+
+  .clinical-slide figcaption span {
+    font-size: 0.6rem;
+  }
+
+  .clinical-note {
+    position: static;
+    width: 100%;
+    background: var(--ink);
+    border-radius: 0;
+  }
+
+  .clinical-control {
+    width: 38px;
+    height: 38px;
+    font-size: 1.65rem;
+  }
+
+  .clinical-dots {
+    position: static;
+    justify-content: center;
+    padding: 12px 0 14px;
+    background: var(--ink);
+  }
+
+  .form-row.two-columns,
+  .address-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-form {
+    padding: 22px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
