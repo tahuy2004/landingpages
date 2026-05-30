@@ -77,6 +77,21 @@ const initDevtoolsGuard = () => {
 
 initDevtoolsGuard();
 
+// SCROLL TOP: dam bao moi link ve dau trang luon cuon len, ke ca khi URL da co #top.
+document.querySelectorAll('a[href="#top"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    if (window.location.hash === "#top") {
+      window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
+    }
+  });
+});
+
 // MENU MOBILE: mo/dong menu tren man hinh nho
 if (menuToggle && siteNav) {
   menuToggle.addEventListener("click", () => {
