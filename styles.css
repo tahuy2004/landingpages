@@ -85,15 +85,24 @@ textarea {
 }
 
 .brand-mark {
+  flex: 0 0 52px;
   display: inline-grid;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   place-items: center;
   color: var(--white);
   font-weight: 800;
-  background: linear-gradient(135deg, #07155f 0%, #1539d6 100%);
-  border: 2px solid rgba(232, 255, 22, 0.74);
+  background: var(--white);
+  border: 0;
   border-radius: var(--radius);
+  overflow: hidden;
+}
+
+img.brand-mark {
+  display: block;
+  padding: 5px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .brand strong,
@@ -897,6 +906,8 @@ p {
   background: var(--ink);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .clinical-track {
@@ -906,11 +917,26 @@ p {
 }
 
 .clinical-page {
+  position: relative;
   display: grid;
   flex: 0 0 100%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   padding: 12px;
+}
+
+.clinical-page::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: clamp(180px, 22vw, 340px);
+  aspect-ratio: 4 / 1;
+  background: url("assets/logo2an.png") center / contain no-repeat;
+  opacity: 0.32;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
 .clinical-slide {
@@ -930,6 +956,10 @@ p {
   height: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .clinical-slide figcaption {
@@ -1331,8 +1361,7 @@ textarea:focus {
 }
 
 .footer-logo .brand-mark {
-  color: var(--ink);
-  background: var(--aqua);
+  background: var(--white);
 }
 
 .footer-logo strong {
@@ -1593,6 +1622,11 @@ textarea:focus {
   .clinical-page {
     gap: 8px;
     padding: 8px;
+  }
+
+  .clinical-page::after {
+    width: clamp(140px, 38vw, 210px);
+    opacity: 0.3;
   }
 
   .clinical-slide img {

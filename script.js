@@ -19,6 +19,64 @@ const clinicalNoteTag = document.querySelector("[data-clinical-note-tag]");
 const clinicalNoteTitle = document.querySelector("[data-clinical-note-title]");
 const clinicalNoteDesc = document.querySelector("[data-clinical-note-desc]");
 
+// DEVTOOLS: mo khoa cho chu web bang URL ?p9admin=p9owner250
+const devtoolsAccessKey = "p9-devtools-access";
+const devtoolsAccessUrl = new URL(window.location.href);
+const devtoolsAccessCode = devtoolsAccessUrl.searchParams.get("p9admin");
+
+const enableOwnerDevtoolsAccess = () => {
+  if (devtoolsAccessCode === "p9owner250") {
+    try {
+      window.localStorage.setItem(devtoolsAccessKey, "1");
+    } catch (error) {
+      // Bo qua neu trinh duyet chan localStorage.
+    }
+
+    devtoolsAccessUrl.searchParams.delete("p9admin");
+    window.history.replaceState({}, document.title, devtoolsAccessUrl.toString());
+    return true;
+  }
+
+  try {
+    return window.localStorage.getItem(devtoolsAccessKey) === "1";
+  } catch (error) {
+    return false;
+  }
+};
+
+const ownerCanUseDevtools = enableOwnerDevtoolsAccess();
+
+// DEVTOOLS: chan phim va thao tac pho bien voi nguoi xem thuong.
+const initDevtoolsGuard = () => {
+  if (ownerCanUseDevtools) {
+    return;
+  }
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      const key = event.key.toLowerCase();
+      const blockedShortcut =
+        event.key === "F12" ||
+        (event.ctrlKey && event.shiftKey && ["i", "j", "c"].includes(key)) ||
+        (event.metaKey && event.altKey && ["i", "j", "c"].includes(key)) ||
+        (event.ctrlKey && ["u", "s"].includes(key)) ||
+        (event.metaKey && ["u", "s"].includes(key));
+
+      if (blockedShortcut) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    },
+    true
+  );
+
+  document.addEventListener("contextmenu", (event) => event.preventDefault(), true);
+  document.addEventListener("dragstart", (event) => event.preventDefault(), true);
+};
+
+initDevtoolsGuard();
+
 // MENU MOBILE: mo/dong menu tren man hinh nho
 if (menuToggle && siteNav) {
   menuToggle.addEventListener("click", () => {
@@ -237,6 +295,21 @@ const createClinicalPage = (slides) => {
   return page;
 };
 
+// CA LAM SANG: chan thao tac luu/keo/chon anh truc tiep tren giao dien.
+const protectClinicalImages = () => {
+  if (ownerCanUseDevtools) {
+    return;
+  }
+
+  clinicalCarousel.addEventListener("contextmenu", (event) => event.preventDefault());
+  clinicalCarousel.addEventListener("dragstart", (event) => event.preventDefault());
+  clinicalCarousel.addEventListener("selectstart", (event) => event.preventDefault());
+
+  clinicalCarousel.querySelectorAll("img").forEach((image) => {
+    image.setAttribute("draggable", "false");
+  });
+};
+
 // CA LAM SANG: khoi tao slider, dots, nut truoc/sau va autoplay.
 const initClinicalCarousel = () => {
   if (!clinicalCarousel || !clinicalTrack || !clinicalDots || !clinicalPrev || !clinicalNext) {
@@ -253,6 +326,8 @@ const initClinicalCarousel = () => {
   for (let index = 0; index < slideItems.length; index += 2) {
     clinicalTrack.append(createClinicalPage(slideItems.slice(index, index + 2)));
   }
+
+  protectClinicalImages();
 
   const pages = Array.from(clinicalTrack.querySelectorAll(".clinical-page"));
   const slides = Array.from(clinicalTrack.querySelectorAll(".clinical-slide"));
