@@ -182,29 +182,6 @@ const updateCountdown = () => {
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
 
-// CA LAM SANG: cac anh tu dong nap neu dat ten clinical-01, clinical-02...
-const clinicalImageSources = Array.from({ length: 24 }, (_, index) => {
-  const number = String(index + 1).padStart(2, "0");
-  return [
-    `assets/clinical/clinical-${number}.jpg`,
-    `assets/clinical/clinical-${number}.jpeg`,
-    `assets/clinical/clinical-${number}.png`,
-    `assets/clinical/clinical-${number}.webp`,
-  ];
-}).flat();
-
-// CA LAM SANG: nhan moc ngay hien tren tung anh.
-const clinicalDayLabels = [
-  "Trước chăm sóc",
-  "Sau 7 ngày",
-  "Trước chăm sóc",
-  "Sau 14 ngày",
-  "Trước chăm sóc",
-  "Sau 21 ngày",
-  "Trước chăm sóc",
-  "Sau 28 ngày",
-];
-
 // CA LAM SANG: fallback note neu HTML khong co data-case-*.
 const clinicalCaseNotes = [
   {
@@ -252,36 +229,6 @@ const updateClinicalNote = (pageIndex, page) => {
   }
 };
 
-// CA LAM SANG: kiem tra file anh co ton tai hay khong.
-const loadClinicalImage = (src) =>
-  new Promise((resolve) => {
-    const image = new Image();
-
-    image.onload = () => resolve(src);
-    image.onerror = () => resolve(null);
-    image.src = src;
-  });
-
-// CA LAM SANG: tao 1 figure anh neu JS tu nap anh tu thu muc assets/clinical.
-const createClinicalSlide = (src, index) => {
-  const slide = document.createElement("figure");
-  const image = document.createElement("img");
-  const caption = document.createElement("figcaption");
-  const caseLabel = document.createElement("span");
-  const dayLabel = document.createElement("strong");
-  const caseNumber = Math.floor(index / 2) + 1;
-
-  slide.className = "clinical-slide";
-  image.src = src;
-  image.alt = `Hình ảnh lâm sàng P9 số ${index + 1}`;
-  caseLabel.textContent = `Ca lâm sàng ${String(caseNumber).padStart(2, "0")}`;
-  dayLabel.textContent = clinicalDayLabels[index % clinicalDayLabels.length];
-  caption.append(caseLabel, dayLabel);
-
-  slide.append(image, caption);
-  return slide;
-};
-
 // CA LAM SANG: gom moi 2 figure thanh 1 trang slider.
 const createClinicalPage = (slides) => {
   const page = document.createElement("div");
@@ -291,22 +238,15 @@ const createClinicalPage = (slides) => {
 };
 
 // CA LAM SANG: khoi tao slider, dots, nut truoc/sau va autoplay.
-const initClinicalCarousel = async () => {
+const initClinicalCarousel = () => {
   if (!clinicalCarousel || !clinicalTrack || !clinicalDots || !clinicalPrev || !clinicalNext) {
     return;
   }
 
   const existingSlides = Array.from(clinicalTrack.querySelectorAll(".clinical-slide"));
 
-  // Neu ban them anh truc tiep trong HTML thi uu tien HTML, khong ghi de bang anh tu dong.
-  const hasCustomSlides = existingSlides.some((slide) => {
-    const image = slide.querySelector("img");
-    return image && !image.getAttribute("src")?.includes("p9-clinical-cases.png");
-  });
-  const loadedSources = await Promise.all(clinicalImageSources.map(loadClinicalImage));
-  const validSources = loadedSources.filter(Boolean);
-  const loadedSlides = validSources.map((src, index) => createClinicalSlide(src, index));
-  const slideItems = hasCustomSlides ? existingSlides : loadedSlides.length ? loadedSlides : existingSlides;
+  // Moi ca duoc khai bao truc tiep trong HTML; moi 2 figure lien tiep thanh 1 trang.
+  const slideItems = existingSlides;
 
   clinicalTrack.innerHTML = "";
 
