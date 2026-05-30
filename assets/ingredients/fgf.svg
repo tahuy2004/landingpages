@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">FGF</title>
+  <desc id="desc">Ingredient illustration for FGF</desc>
+  <rect width="640" height="420" fill="#f4f7ff"/>
+  <path d="M154 272c54-118 126-176 216-176 66 0 106 32 116 96 9 60-16 104-76 132" fill="none" stroke="#1539d6" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="190" cy="246" r="34" fill="#e8ff16"/>
+  <circle cx="328" cy="116" r="34" fill="#e8ff16"/>
+  <circle cx="466" cy="200" r="34" fill="#e8ff16"/>
+  <text x="50%" y="350" text-anchor="middle" fill="#07155f" font-family="Arial, sans-serif" font-size="52" font-weight="800">FGF</text>
+</svg>

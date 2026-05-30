@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">TRX</title>
+  <desc id="desc">Ingredient illustration for TRX</desc>
+  <rect width="640" height="420" fill="#f4f7ff"/>
+  <path d="M180 132l280 156M460 132L180 288" stroke="#1539d6" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="180" cy="132" r="34" fill="#e8ff16"/>
+  <circle cx="460" cy="132" r="34" fill="#e8ff16"/>
+  <circle cx="180" cy="288" r="34" fill="#e8ff16"/>
+  <circle cx="460" cy="288" r="34" fill="#e8ff16"/>
+  <circle cx="320" cy="210" r="46" fill="#1539d6"/>
+  <text x="50%" y="350" text-anchor="middle" fill="#07155f" font-family="Arial, sans-serif" font-size="52" font-weight="800">TRX</text>
+</svg>

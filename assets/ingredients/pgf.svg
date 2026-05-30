@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">PGF</title>
+  <desc id="desc">Ingredient illustration for PGF</desc>
+  <rect width="640" height="420" fill="#f4f7ff"/>
+  <path d="M176 280V140m0 0h120c52 0 82 28 82 72s-30 72-82 72H176" fill="none" stroke="#1539d6" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M406 282V138h86" fill="none" stroke="#e8ff16" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M406 208h72" fill="none" stroke="#e8ff16" stroke-width="24" stroke-linecap="round"/>
+  <text x="50%" y="350" text-anchor="middle" fill="#07155f" font-family="Arial, sans-serif" font-size="52" font-weight="800">PGF</text>
+</svg>

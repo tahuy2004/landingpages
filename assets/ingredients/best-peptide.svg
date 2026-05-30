@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Best Peptide</title>
+  <desc id="desc">Ingredient illustration for Best Peptide</desc>
+  <rect width="640" height="420" fill="#f4f7ff"/>
+  <circle cx="178" cy="160" r="76" fill="#1539d6" opacity=".16"/>
+  <circle cx="452" cy="260" r="96" fill="#e8ff16" opacity=".38"/>
+  <path d="M126 272c70-110 160-148 270-112 58 19 98 54 120 104" fill="none" stroke="#1539d6" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="180" cy="206" r="28" fill="#1539d6"/>
+  <circle cx="292" cy="154" r="28" fill="#1539d6"/>
+  <circle cx="414" cy="182" r="28" fill="#1539d6"/>
+  <text x="50%" y="340" text-anchor="middle" fill="#07155f" font-family="Arial, sans-serif" font-size="44" font-weight="800">Best Peptide</text>
+</svg>

@@ -3,6 +3,10 @@ const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 const leadForm = document.querySelector("[data-lead-form]");
 const formStatus = document.querySelector("[data-form-status]");
+const backToTopButton = document.querySelector("[data-back-to-top]");
+const serviceOptions = document.querySelectorAll("[data-service-option]");
+const otherNoteRow = document.querySelector("[data-other-note]");
+const messageInput = document.querySelector("#message");
 const videoCard = document.querySelector("[data-video-card]");
 const videoModal = document.querySelector("[data-video-modal]");
 const closeVideoButtons = document.querySelectorAll("[data-close-video]");
@@ -18,6 +22,13 @@ const clinicalNext = document.querySelector("[data-clinical-next]");
 const clinicalNoteTag = document.querySelector("[data-clinical-note-tag]");
 const clinicalNoteTitle = document.querySelector("[data-clinical-note-title]");
 const clinicalNoteDesc = document.querySelector("[data-clinical-note-desc]");
+const ingredientButtons = document.querySelectorAll("[data-ingredient-button]");
+const ingredientDetail = document.querySelector("[data-ingredient-detail]");
+const ingredientImage = document.querySelector("[data-ingredient-image]");
+const ingredientKicker = document.querySelector("[data-ingredient-kicker]");
+const ingredientTitle = document.querySelector("[data-ingredient-title]");
+const ingredientText = document.querySelector("[data-ingredient-text]");
+const ingredientCloseButtons = document.querySelectorAll("[data-ingredient-close]");
 
 // DEVTOOLS: mo khoa cho chu web bang URL ?p9admin=p9owner250
 const devtoolsAccessKey = "p9-devtools-access";
@@ -92,6 +103,42 @@ document.querySelectorAll('a[href="#top"]').forEach((link) => {
   });
 });
 
+if (backToTopButton) {
+  let backToTopTicking = false;
+
+  const updateBackToTopButton = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollProgress = scrollRange > 0 ? Math.min(scrollTop / scrollRange, 1) : 0;
+    const progressDegrees = `${Math.round(scrollProgress * 360)}deg`;
+
+    backToTopButton.classList.toggle("is-visible", scrollTop > 220);
+    backToTopButton.style.setProperty("--scroll-progress", progressDegrees);
+    backToTopButton.setAttribute("aria-hidden", scrollTop > 220 ? "false" : "true");
+    backToTopTicking = false;
+  };
+
+  const requestBackToTopUpdate = () => {
+    if (backToTopTicking) {
+      return;
+    }
+
+    backToTopTicking = true;
+    window.requestAnimationFrame(updateBackToTopButton);
+  };
+
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  window.addEventListener("scroll", requestBackToTopUpdate, { passive: true });
+  window.addEventListener("resize", requestBackToTopUpdate);
+  updateBackToTopButton();
+}
+
 // MENU MOBILE: mo/dong menu tren man hinh nho
 if (menuToggle && siteNav) {
   menuToggle.addEventListener("click", () => {
@@ -105,6 +152,107 @@ if (menuToggle && siteNav) {
       menuToggle.setAttribute("aria-expanded", "false");
     }
   });
+}
+
+// HOAT CHAT: click chip de hien khung anh va noi dung chi tiet.
+const ingredientContent = {
+  "best-peptide": {
+    title: "Best Peptide",
+    image: "assets/ingredients/best-peptide.svg",
+    text:
+      "Tổ hợp peptide hỗ trợ phục hồi nền da, kích thích tái tạo và tăng cường độ săn chắc trong phác đồ chăm sóc chuyên sâu.",
+  },
+  egf: {
+    title: "EGF",
+    image: "assets/ingredients/egf.svg",
+    text:
+      "Yếu tố tăng trưởng biểu bì hỗ trợ quá trình tái tạo bề mặt da, phù hợp cho nền da cần phục hồi sau tác động công nghệ cao.",
+  },
+  fgf: {
+    title: "FGF",
+    image: "assets/ingredients/fgf.svg",
+    text:
+      "Yếu tố tăng trưởng nguyên bào sợi hỗ trợ tăng sinh mô liên kết, góp phần cải thiện cấu trúc nền da và độ đàn hồi.",
+  },
+  igf: {
+    title: "IGF",
+    image: "assets/ingredients/igf.svg",
+    text:
+      "Yếu tố tăng trưởng tương tự insulin hỗ trợ nuôi dưỡng tế bào da, tăng khả năng phục hồi và duy trì nền da khỏe.",
+  },
+  pgf: {
+    title: "PGF",
+    image: "assets/ingredients/pgf.svg",
+    text:
+      "Nhóm yếu tố hỗ trợ quá trình phục hồi mô, tăng cường điều kiện cho da tái tạo trong các liệu trình chuyên sâu.",
+  },
+  trx: {
+    title: "TRX",
+    image: "assets/ingredients/trx.svg",
+    text:
+      "Thành phần hỗ trợ chống oxy hóa, góp phần bảo vệ tế bào da và duy trì trạng thái da ổn định sau chăm sóc.",
+  },
+};
+
+const closeIngredientModal = () => {
+  if (!ingredientDetail) {
+    return;
+  }
+
+  ingredientDetail.hidden = true;
+  document.body.style.overflow = "";
+  ingredientButtons.forEach((button) => button.classList.remove("is-active"));
+};
+
+if (ingredientButtons.length && ingredientDetail && ingredientImage && ingredientTitle && ingredientText) {
+  ingredientButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = ingredientContent[button.dataset.ingredient];
+
+      if (!item) {
+        return;
+      }
+
+      ingredientButtons.forEach((chip) => chip.classList.toggle("is-active", chip === button));
+      ingredientDetail.hidden = false;
+      document.body.style.overflow = "hidden";
+      ingredientImage.src = item.image;
+      ingredientImage.alt = `Minh họa hoạt chất ${item.title}`;
+      ingredientTitle.textContent = item.title;
+      ingredientText.textContent = item.text;
+
+      if (ingredientKicker) {
+        ingredientKicker.textContent = "Hoạt chất nổi bật";
+      }
+    });
+  });
+
+  ingredientCloseButtons.forEach((button) => {
+    button.addEventListener("click", closeIngredientModal);
+  });
+}
+
+// FORM DOI TAC: neu chon "Khac" thi hien o ghi chu them.
+const syncOtherNoteField = () => {
+  if (!serviceOptions.length || !otherNoteRow || !messageInput) {
+    return;
+  }
+
+  const selectedService = Array.from(serviceOptions).find((option) => option.checked)?.value || "";
+  const isOtherService = selectedService === "Khác";
+  otherNoteRow.hidden = !isOtherService;
+  messageInput.required = isOtherService;
+
+  if (!isOtherService) {
+    messageInput.value = "";
+  }
+};
+
+if (serviceOptions.length) {
+  serviceOptions.forEach((option) => {
+    option.addEventListener("change", syncOtherNoteField);
+  });
+  syncOtherNoteField();
 }
 
 // FORM DOI TAC: gui du lieu ve Google Apps Script / Google Sheet
@@ -122,6 +270,7 @@ if (leadForm && formStatus) {
     // Lay du lieu tu form va gom dia chi thanh mot chuoi day du.
     const name = String(formData.get("name") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
+    const position = String(formData.get("position") || "").trim();
     const business = String(formData.get("business") || "").trim();
     const addressLine = String(formData.get("addressLine") || "").trim();
     const ward = String(formData.get("ward") || "").trim();
@@ -130,7 +279,13 @@ if (leadForm && formStatus) {
     const message = String(formData.get("message") || "").trim();
     const submittedAt = new Date();
     const address = [addressLine, ward, city].filter(Boolean).join(", ");
-    const content = [`Tên cơ sở: ${business}`, message && `Nội dung: ${message}`].filter(Boolean).join(" | ");
+    const content = [
+      position && `Chức danh: ${position}`,
+      business && `Tên cơ sở: ${business}`,
+      message && `Nội dung: ${message}`,
+    ]
+      .filter(Boolean)
+      .join(" | ");
     const endpoint = leadForm.dataset.endpoint || leadForm.action;
     const submitButton = leadForm.querySelector('button[type="submit"]');
     const payload = new URLSearchParams();
@@ -143,6 +298,7 @@ if (leadForm && formStatus) {
     // Mapping truong tieng Anh: phong truong hop Apps Script doc key khong dau.
     payload.set("name", name);
     payload.set("phone", phone);
+    payload.set("position", position);
     payload.set("address", address);
     payload.set("service", service);
     payload.set("message", content || message);
@@ -155,6 +311,7 @@ if (leadForm && formStatus) {
     // Mapping dung ten cot Google Sheet hien tai.
     payload.set("Họ tên", name);
     payload.set("Số điện thoại", phone);
+    payload.set("Chức danh", position);
     payload.set("Địa chỉ", address);
     payload.set("Dịch vụ", service);
     payload.set("Nội dung", content || message);
@@ -222,6 +379,7 @@ closeVideoButtons.forEach((button) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeVideo();
+    closeIngredientModal();
   }
 });
 

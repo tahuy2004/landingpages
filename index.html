@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/logo-icon.png">
-  <link rel="apple-touch-icon" href="assets/logo-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/logo-icon.png?v=20260530-25">
+  <link rel="apple-touch-icon" href="assets/logo-icon.png?v=20260530-25">
+  <link rel="stylesheet" href="styles.css?v=20260530-25">
 </head>
 
 <body>
@@ -189,13 +189,26 @@
           <div class="ingredient-panel">
             <h3>Chi tiết chất liệu / hoạt chất nổi bật</h3>
             <div class="ingredient-grid">
-              <span>Best Peptide</span>
-              <span>EGF</span>
-              <span>FGF</span>
-              <span>IGF</span>
-              <span>PGF</span>
-              <span>TRX</span>
+              <button class="ingredient-chip" type="button" data-ingredient-button data-ingredient="best-peptide">
+                Best Peptide
+              </button>
+              <button class="ingredient-chip" type="button" data-ingredient-button data-ingredient="egf">
+                EGF
+              </button>
+              <button class="ingredient-chip" type="button" data-ingredient-button data-ingredient="fgf">
+                FGF
+              </button>
+              <button class="ingredient-chip" type="button" data-ingredient-button data-ingredient="igf">
+                IGF
+              </button>
+              <button class="ingredient-chip" type="button" data-ingredient-button data-ingredient="pgf">
+                PGF
+              </button>
+              <button class="ingredient-chip" type="button" data-ingredient-button data-ingredient="trx">
+                TRX
+              </button>
             </div>
+
             <p>
               Peptide là hoạt chất sinh học hàng đầu giúp kích thích tái tạo da, tăng sinh Collagen, phục hồi tổn thương
               và hỗ trợ làm đầy sẹo rỗ, sẹo lõm. P9 Perfect Skin Nano More 250 chứa tổ hợp Peptide cao cấp giúp da phục
@@ -496,9 +509,14 @@
               <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="09xx xxx xxx">
             </div>
             <div>
-              <label for="business">Tên phòng khám / clinic / TMV / spa</label>
-              <input id="business" name="business" type="text" required placeholder="P9 Dermatology Clinic">
+              <label for="position">Chức danh</label>
+              <input id="position" name="position" type="text" required placeholder="Bác sĩ / Chủ clinic / Quản lý">
             </div>
+          </div>
+
+          <div class="form-row">
+            <label for="business">Tên phòng khám / clinic / TMV / spa</label>
+            <input id="business" name="business" type="text" required placeholder="P9 Dermatology Clinic">
           </div>
 
           <div class="form-row">
@@ -513,20 +531,27 @@
           </div>
 
           <div class="form-row">
-            <label for="service">Dịch vụ quan tâm</label>
-            <select id="service" name="service" required>
-              <option value="">Chọn dịch vụ</option>
-              <option>Tư vấn triển khai cho bác sĩ / phòng khám da liễu</option>
-              <option>Triển khai liệu trình cho clinic chăm sóc da</option>
-              <option>Training quy trình cho thẩm mỹ viện / spa</option>
-              <option>Nhập sản phẩm cho cơ sở</option>
-              <option>Nhà phân phối khu vực</option>
-            </select>
+            <span class="field-label">Dịch vụ quan tâm</span>
+            <div class="service-options" role="radiogroup" aria-label="Dịch vụ quan tâm">
+              <label class="service-option">
+                <input type="radio" name="service" value="Nhận tài liệu + chuyển giao phác đồ" data-service-option required>
+                <span>Nhận tài liệu + chuyển giao phác đồ</span>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Báo giá" data-service-option required>
+                <span>Báo giá</span>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Khác" data-service-option required>
+                <span>Khác</span>
+              </label>
+            </div>
           </div>
-          <div class="form-row">
-            <label for="message">Ghi chú thêm</label>
+
+          <div class="form-row" data-other-note hidden>
+            <label for="message">Thêm thông tin / ghi chú</label>
             <textarea id="message" name="message" rows="4"
-              placeholder="Quy mô cơ sở, số chi nhánh, dịch vụ đang vận hành hoặc nhu cầu training"></textarea>
+              placeholder="Vui lòng ghi rõ nhu cầu khác để đội ngũ P9 tư vấn đúng hơn"></textarea>
           </div>
           <label class="consent">
             <input type="checkbox" name="consent" required>
@@ -547,6 +572,22 @@
       <div class="video-placeholder">
         <strong>P9 - Perfect Skin Nano 250</strong>
         <span>Video giới thiệu sẽ được cập nhật tại đây.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL HOAT CHAT: hien anh va text khi bam chip trong phan chi tiet san pham -->
+  <div class="ingredient-modal" data-ingredient-detail hidden>
+    <div class="ingredient-modal-backdrop" data-ingredient-close></div>
+    <div class="ingredient-modal-panel" role="dialog" aria-modal="true" aria-label="Chi tiết hoạt chất">
+      <button class="ingredient-modal-close" type="button" data-ingredient-close aria-label="Đóng chi tiết">×</button>
+      <img data-ingredient-image src="assets/ingredients/best-peptide.svg" alt="Minh họa hoạt chất Best Peptide">
+      <div class="ingredient-modal-copy">
+        <span data-ingredient-kicker>Hoạt chất nổi bật</span>
+        <h3 data-ingredient-title>Best Peptide</h3>
+        <p data-ingredient-text>
+          Tổ hợp peptide hỗ trợ phục hồi nền da, kích thích tái tạo và tăng cường độ săn chắc trong phác đồ chăm sóc chuyên sâu.
+        </p>
       </div>
     </div>
   </div>
@@ -575,7 +616,7 @@
       <div class="footer-col">
         <h2>Liên hệ</h2>
         <a href="tel:0986001885">Hotline: 0986001885</a>
-        <a href="Cskhperfectnhatban@gmail.com">Email: Cskhperfectnhatban@gmail.com</a>
+        <a href="mailto:Cskhperfectnhatban@gmail.com">Email: Cskhperfectnhatban@gmail.com</a>
         <span>Thời gian tư vấn: 08:30 - 18:00</span>
       </div>
 
@@ -603,12 +644,16 @@
     </div>
     <div class="container footer-bottom">
       <p>© 2026 P9 Perfect Skin Nano 250. All rights reserved.</p>
-      <a href="#top">Về đầu trang</a>
     </div>
   </footer>
 
+  <!-- NUT VE DAU TRANG: nut noi goc duoi man hinh -->
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Về đầu trang">
+    <span></span>
+  </button>
+
   <!-- JS: menu mobile, gui form, countdown, video modal, slider ca lam sang -->
-  <script src="script.js"></script>
+  <script src="script.js?v=20260530-25"></script>
 </body>
 
 </html>

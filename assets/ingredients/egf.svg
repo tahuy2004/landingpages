@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">EGF</title>
+  <desc id="desc">Ingredient illustration for EGF</desc>
+  <rect width="640" height="420" fill="#f4f7ff"/>
+  <rect x="118" y="82" width="404" height="210" rx="38" fill="#ffffff" stroke="#dfe6ff" stroke-width="10"/>
+  <path d="M182 220h90l34-82 48 126 38-82h70" fill="none" stroke="#1539d6" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="510" cy="94" r="54" fill="#e8ff16" opacity=".75"/>
+  <text x="50%" y="350" text-anchor="middle" fill="#07155f" font-family="Arial, sans-serif" font-size="52" font-weight="800">EGF</text>
+</svg>

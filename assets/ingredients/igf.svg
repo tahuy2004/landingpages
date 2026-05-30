@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">IGF</title>
+  <desc id="desc">Ingredient illustration for IGF</desc>
+  <rect width="640" height="420" fill="#f4f7ff"/>
+  <circle cx="320" cy="190" r="118" fill="#1539d6" opacity=".12"/>
+  <path d="M220 190c38-66 72-98 102-98s64 32 102 98c-38 66-72 98-102 98s-64-32-102-98z" fill="#ffffff" stroke="#1539d6" stroke-width="18"/>
+  <circle cx="322" cy="190" r="42" fill="#e8ff16"/>
+  <text x="50%" y="350" text-anchor="middle" fill="#07155f" font-family="Arial, sans-serif" font-size="52" font-weight="800">IGF</text>
+</svg>
